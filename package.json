@@ -1,0 +1,22 @@
+{
+  "name": "mongodb-netn",
+  "version": "1.0.0",
+  "description": "MongoDB, NodeJS, Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AugustoDiaz-Dev/MongoDB-NetN.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AugustoDiaz-Dev/MongoDB-NetN/issues"
+  },
+  "homepage": "https://github.com/AugustoDiaz-Dev/MongoDB-NetN#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
