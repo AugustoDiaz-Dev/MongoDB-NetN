@@ -10,7 +10,7 @@ let db;
 connectToDB((err) => {
     if (!err) {
         app.listen(PORT, () => {
-            console.log("App listening on port: ${PORT}")
+            console.log(`App listening on port: ${PORT}`)
         });
         db = getDB();
     }
@@ -18,6 +18,17 @@ connectToDB((err) => {
 
 // Routes
 app.get('/books', (req, res) => {
-    res.json({ mssg: "Welcome to the API" })
+    let books = [];
+
+    db.collection('books')
+        .find() // Cursor --> ToArray forEach
+        .sort({ author: 1 })
+        .forEach(book => books.push(book))
+        .then(() => {
+            res.status(200).json(books)
+        })
+        .catch(() => {
+            res.status(500).json({ error: 'Could not fetch the documents' });
+        })
 })
 
