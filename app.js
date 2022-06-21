@@ -20,11 +20,17 @@ connectToDB((err) => {
 
 // Routes
 app.get('/books', (req, res) => {
+
+    const page = req.query.p || 0;
+    const booksPerPage = 2;
+
     let books = [];
 
     db.collection('books')
         .find() // Cursor --> ToArray forEach
         .sort({ author: 1 })
+        .skip(page * booksPerPage)
+        .limit(booksPerPage)
         .forEach(book => books.push(book))
         .then(() => {
             res.status(200).json(books)
